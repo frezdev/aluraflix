@@ -1,10 +1,20 @@
+import { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import { NavLink } from './NavLink';
 
 export const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      window.scrollY > 0
+        ? setIsScrolled(true)
+        : setIsScrolled(false)
+    })
+  }, [])
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isScrolled && styles.onScrollWindow}`}>
       <nav>
         <div className={styles.logoContainer}>
           <a href="/">

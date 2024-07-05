@@ -1,8 +1,18 @@
 .header {
   padding: 2rem 3rem;
-  background-color: var(--dark-blue);
+  position: fixed;
+  width: 100%;
+  z-index: 120;
+  background: linear-gradient(180deg, var(--dark-blue) 9%, transparent 90%);
+  transition: ease-in-out .2s;
+  /* background-color: var(--dark-blue);
   border-bottom: 3px solid var(--mid-blue);
-  box-shadow: 0px 2px 30px 10px var(--mid-blue);
+  box-shadow: 0px 2px 15px 5px var(--mid-blue);
+  z-index: 99;
+  position: relative; */
+  &.onScrollWindow {
+    background-color: var(--dark-blue);
+  }
 
   & nav {
     display: flex;
