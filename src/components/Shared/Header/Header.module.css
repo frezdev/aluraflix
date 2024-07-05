@@ -1,5 +1,5 @@
 .header {
-  padding: 2rem;
+  padding: 2rem 3rem;
   background-color: var(--dark-blue);
   border-bottom: 3px solid var(--mid-blue);
   box-shadow: 0px 2px 30px 10px var(--mid-blue);
@@ -34,7 +34,7 @@
   }
 
   .logoContainer {
-    width: 12%;
+    width: 10%;
   }
   .navigations {
     display: flex;
