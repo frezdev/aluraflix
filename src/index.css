@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -16,6 +16,12 @@
   --dark-gray: #262626;
   --dark-blue: #0B1017;
   --mid-blue: #2271D1;
+  --light-blue: #6BD1FF;
+  --white: #fff;
+
+  --font-source-sans: 'Source Sans 3';
+  --font-roboto: 'Roboto Condensed';
+  --defaut-fonts: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -25,16 +31,13 @@
 }
 html {
   font-size: 62.5%;
-  font-family: "Source Sans 3", sans-serif !important;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
+  font-family: var(--font-source-sans), var(--defaut-fonts);
 }
 
 
-.source-sans-3-600 {
+/* .source-sans-3-600 {
   font-family: "Source Sans 3", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-}
+} */
