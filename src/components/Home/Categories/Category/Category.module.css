@@ -1,0 +1,45 @@
+.category {
+  margin-bottom: 4rem;
+}
+.categoryTitle {
+  color: var(--white);
+  font-family: var(--font-roboto);
+  font-weight: 600;
+  font-size: 2.5rem;
+  width: 31rem;
+  padding-block: .5rem;
+  text-align: center;
+  border-radius: 1rem;
+  text-shadow: 0 0 5px #000000a8;
+}
+
+.categoryVideos {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  gap: 2rem;
+  padding-block: 3rem;
+  list-style: none;
+
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    background: #607d8b24;
+    border-radius: 1rem;
+  }
+  &::-webkit-scrollbar:horizontal {
+    height: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--mid-blue);
+    border-radius: 1rem;
+  }
+
+
+  & li {
+    width: 100%;
+    gap: 1rem;
+    min-width: 31rem;
+    max-width: 31rem;
+  }
+}

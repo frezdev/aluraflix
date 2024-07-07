@@ -33,6 +33,9 @@ html {
   font-size: 62.5%;
   font-family: var(--font-source-sans), var(--defaut-fonts);
 }
+body {
+  background-color: var(--dark-blue);
+}
 
 
 /* .source-sans-3-600 {

@@ -11,6 +11,10 @@ export const Header = () => {
         ? setIsScrolled(true)
         : setIsScrolled(false)
     })
+
+    return () => {
+      window.removeEventListener('scroll', (e) => { e.preventDefault() })
+    }
   }, [])
 
   return (

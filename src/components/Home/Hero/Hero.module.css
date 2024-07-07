@@ -63,7 +63,7 @@
     & .imgContainer {
       display: flex;
       border-radius: 1.5rem;
-      /* border: 3px solid var(--light-blue); */
+      border: 3px solid var(--light-blue);
       overflow: hidden;
       position: relative;
 
@@ -72,8 +72,6 @@
         position: absolute;
         inset: 0;
         box-shadow: inset 0 0 10px 2px var(--light-blue);
-        border: 3px solid var(--light-blue);
-        border-radius: 1.5rem;
       }
 
       & img {
