@@ -5,6 +5,9 @@ import { validateVideo, validatePartialVideo } from './validations/validationVid
 import {videos} from './videos.js'
 import {categories} from './categories.js'
 
+import dotenv from 'dotenv'
+dotenv.config()
+
 const app = express()
 
 const PORT = env.PORT ?? 3002
