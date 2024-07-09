@@ -32,6 +32,10 @@ export const useVideosReducer = () => {
     dispatch({ type: 'SET_CATEGORIES', payload: categories })
   }
 
+  const unselectVideo = () => {
+    dispatch({ type: 'UNSELECT_VIDEO', payload: null })
+  }
+
   return {
     setVideos,
     addVideo,
@@ -39,6 +43,7 @@ export const useVideosReducer = () => {
     setCategories,
     updateVideo,
     selectVideo,
+    unselectVideo,
     state
   }
 }

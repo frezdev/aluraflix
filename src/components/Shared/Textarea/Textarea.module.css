@@ -1,0 +1,43 @@
+.textarea {
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 16px;
+  border: 2px solid;
+  border-radius: 1rem;
+  appearance: none;
+  color: var(--light-gray);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-family: var(--font-source-sans);
+
+  &.black {
+    background-color: var(--dark-gray);
+    border-color: var(--mid-gray);
+  }
+  &.blue {
+    background-color: var(--dark-blue-2);
+    border-color: var(--mid-blue);
+  }
+  &.error {
+    color: var(--red);
+    border-color: var(--red);
+  }
+
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    background: #607d8b24;
+    border-radius: 1rem;
+  }
+  &::-webkit-scrollbar:vertical {
+    width: .5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--mid-blue);
+    border-radius: 1rem;
+  }
+}

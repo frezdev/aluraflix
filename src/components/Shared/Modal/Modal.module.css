@@ -1,10 +1,13 @@
 .modal {
-  background: linear-gradient(rgba(0, 0, 0, 0.623), rgba(0, 0, 0, 0.486));
+  background: var(--opacity-blue);
   display: flex;
   place-content: center;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   inset: 0;
   position: fixed;
+  border: none;
   align-items: center;
+  z-index: 500;
+  overflow-y: auto;
 }

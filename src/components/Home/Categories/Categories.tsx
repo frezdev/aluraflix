@@ -1,10 +1,11 @@
+import { EditVideoForm } from '../EditVideoForm';
 import styles from './Categories.module.css'
 import { Category } from './Category'
 import { useVideosContext } from '@/hooks/useVideosContext';
 
 export const Categories = () => {
   const { state } = useVideosContext()
-  const { categories } = state
+  const { categories, selectedVideo } = state
 
   return (
     <section className={styles.categories}>
@@ -18,6 +19,7 @@ export const Categories = () => {
           />
         ))
       }
+      {selectedVideo && <EditVideoForm />}
     </section>
   )
 }

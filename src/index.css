@@ -13,11 +13,17 @@
   -moz-osx-font-smoothing: grayscale;
 
 
-  --dark-gray: #262626;
+  --dark-gray: #191919;
+  --mid-gray: #262626;
+  --light-gray: #A5A5A5;
   --dark-blue: #0B1017;
+  --dark-blue-2: #03122F;
   --mid-blue: #2271D1;
   --light-blue: #6BD1FF;
   --white: #fff;
+  --red: #E53935;
+
+  --opacity-blue: rgb(3 18 47 / 81%);
 
   --font-source-sans: 'Source Sans 3';
   --font-roboto: 'Roboto Condensed';

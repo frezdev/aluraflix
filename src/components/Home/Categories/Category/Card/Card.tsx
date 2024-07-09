@@ -1,6 +1,6 @@
 import { useVideosContext } from '@/hooks/useVideosContext';
 import styles from './Card.module.css'
-import { Icon } from './Icon'
+import { Icon } from '@/components/Icon'
 
 interface Props {
   img: string;

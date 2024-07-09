@@ -1,46 +1,17 @@
-import type { Category, Video } from '@/types'
+import type { Video } from '@/types'
+import {
+  ReducerVideosAction as Action,
+  ReducerVideosStateTypes as State
+} from './videosReducer.types'
 
-export interface StateTypes {
-  videos: Map<Video['id'], Video>;
-  categories: Category[];
-  selectedVideo: Video | null;
-}
 
-export const initialState: Readonly<StateTypes> = {
+export const initialState: Readonly<State> = {
   videos: new Map(),
   categories: [],
   selectedVideo: null
 }
 
-interface SetVideos {
-  type: 'SET_VIDEOS';
-  payload: Map<Video['id'], Video>;
-}
-interface AddVideo {
-  type: 'ADD_VIDEO';
-  payload: Video;
-}
-interface DeleteVideo {
-  type: 'DELETE_VIDEO';
-  payload: Video['id'];
-}
-interface UpdateVideo {
-  type: 'UPDATE_VIDEO';
-  payload: Video;
-}
-interface SelectVideo {
-  type: 'SELECT_VIDEO';
-  payload: Video;
-}
-
-interface SetCategories {
-  type: 'SET_CATEGORIES';
-  payload: Category[];
-}
-
-type Action = SetVideos | AddVideo | DeleteVideo | SetCategories | UpdateVideo | SelectVideo;
-
-export const reducer: React.Reducer<StateTypes, Action> = (state: StateTypes, action: Action): StateTypes => {
+export const reducer: React.Reducer<State, Action> = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SET_VIDEOS':
       return { ...state, videos: action.payload }
@@ -59,6 +30,9 @@ export const reducer: React.Reducer<StateTypes, Action> = (state: StateTypes, ac
 
     case 'SET_CATEGORIES':
       return { ...state, categories: action.payload }
+
+    case 'UNSELECT_VIDEO':
+      return { ...state, selectedVideo: null }
 
     default:
       return state

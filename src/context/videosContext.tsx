@@ -12,7 +12,8 @@ const defaulValue: ReturnType<typeof useVideosReducer> = {
   deleteVideo: () => { },
   updateVideo: () => { },
   setCategories: () => { },
-  selectVideo: () => { }
+  selectVideo: () => { },
+  unselectVideo: () => { }
 }
 export const VideosContext = createContext(defaulValue)
 
@@ -25,6 +26,7 @@ export const VideoContextProvider = ({ children }: { children: React.ReactNode }
     updateVideo,
     selectVideo,
     setCategories,
+    unselectVideo,
   } = useVideosReducer()
 
   useEffect(() => {
@@ -49,6 +51,7 @@ export const VideoContextProvider = ({ children }: { children: React.ReactNode }
     updateVideo,
     selectVideo,
     setCategories,
+    unselectVideo
   }
   return (
     <VideosContext.Provider value={value}>
