@@ -13,7 +13,13 @@ export const EditVideoForm = () => {
   const { state, updateVideo, unselectVideo } = useVideosContext()
   const { categories, selectedVideo } = state
   const { formik, handleReset, handleSubmit } = useValidationForm(selectedVideo!, async (formValues) => {
-
+    if (selectedVideo && formValues.categoryId !== null) {
+      updateVideo({
+        id: selectedVideo?.id,
+        ...formValues,
+        categoryId: formValues.categoryId,
+      })
+    }
   })
   const { errors, values } = formik
 
