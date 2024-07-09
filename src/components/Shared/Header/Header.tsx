@@ -6,14 +6,15 @@ export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       window.scrollY > 0
         ? setIsScrolled(true)
         : setIsScrolled(false)
-    })
+    }
+    window.addEventListener('scroll', handleScroll)
 
     return () => {
-      window.removeEventListener('scroll', (e) => { e.preventDefault() })
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 

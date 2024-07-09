@@ -1,7 +1,6 @@
 export interface Video {
   id: number;
   title: string;
-  category: string;
   categoryId: number;
   image: string;
   description: string;
@@ -13,3 +12,5 @@ export interface Category {
   description: string;
   asentColor: string;
 }
+
+export type CustomHandleChange = React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>

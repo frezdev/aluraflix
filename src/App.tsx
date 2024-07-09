@@ -1,7 +1,7 @@
-import { Home } from '@/pages/Home'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { RootLayout } from '@/layouts/root'
+import { Home, AddNewVideo, Page404 } from '@/pages/'
 import './App.css'
-import { RootLayout } from './layouts/root'
 
 function App() {
   return (
@@ -9,8 +9,8 @@ function App() {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
-          <Route path='/new' element={<h1>Agregar nuevo video</h1>} />
-          <Route path='*' element={<h1>404</h1>} />
+          <Route path='/new' element={<AddNewVideo />} />
+          <Route path='*' element={<Page404 />} />
         </Route>
       </Routes>
     </BrowserRouter>

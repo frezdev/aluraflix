@@ -11,7 +11,6 @@ import { Video } from "@/types"
 
 const INITIAL_VALUES = {
   title: '',
-  category: '',
   categoryId: 0,
   image: '',
   description: '',
@@ -31,16 +30,15 @@ export const EditVideoForm = () => {
   }
 
 
-  const handleSave: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleSave: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
+
     const categoryId = Number(formValues.categoryId)
-    const category = categories.find(category => category.id === categoryId)
 
     const values: Video = {
       ...selectedVideo,
       ...formValues,
       categoryId,
-      category: category?.title ?? '',
     }
     updateVideo(values)
     unselectVideo()
@@ -62,7 +60,7 @@ export const EditVideoForm = () => {
         <button className={styles.closeBtn} onClick={handleClose}>
           <Icon.close />
         </button>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSave}>
           <div className={styles.form__group_container}>
             <div className={styles.form__group}>
               <h3>EDITAR CARD:</h3>
@@ -72,6 +70,7 @@ export const EditVideoForm = () => {
                   id='title'
                   type="text"
                   variant="blue"
+                  required
                   value={formValues.title}
                   onChange={handleChange}
                   placeholder="Inserta un título"
@@ -83,6 +82,7 @@ export const EditVideoForm = () => {
                 <Select
                   id="categoryId"
                   variant="blue"
+                  required
                   onChange={handleChange}
                   value={formValues.categoryId}
                   options={categories}
@@ -95,6 +95,7 @@ export const EditVideoForm = () => {
                   id='image'
                   type="text"
                   variant="blue"
+                  required
                   value={formValues.image}
                   onChange={handleChange}
                   placeholder="Inserta la url de la imagen"
@@ -107,6 +108,7 @@ export const EditVideoForm = () => {
                   id='url'
                   type="text"
                   variant="blue"
+                  required
                   value={formValues.url}
                   onChange={handleChange}
                   placeholder="Inserta la url del video"
@@ -118,6 +120,7 @@ export const EditVideoForm = () => {
                 <Textarea
                   variant="blue"
                   id="description"
+                  required
                   value={formValues.description}
                   onChange={handleChange}
                 ></Textarea>
@@ -125,7 +128,6 @@ export const EditVideoForm = () => {
 
               <div className={styles.formButtonsContainer}>
                 <button
-                  onClick={handleSave}
                   className={styles.formBtnSave}
                   type="submit"
                 >

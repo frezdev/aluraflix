@@ -1,0 +1,17 @@
+.container {
+  min-height: 100dvh;
+  display: grid;
+  place-content: center;
+  background-color: var(--dark-gray);
+  padding: 2rem;
+  place-items: center;
+  gap: 5rem;
+  width: 100%;
+  grid-template-columns: 100%;
+}
+
+@media (min-width: 800px) {
+  .container {
+    padding-top: 8rem;
+  }
+}

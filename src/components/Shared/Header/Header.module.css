@@ -1,8 +1,6 @@
 .header {
   padding: 1rem 3rem;
-  position: fixed;
   width: 100%;
-  z-index: 120;
   background: linear-gradient(180deg, var(--dark-blue) 9%, transparent 90%);
   transition: ease-in-out .3s;
   /* background-color: var(--dark-blue);
@@ -39,6 +37,9 @@
 
 @media (min-width: 800px) {
   .header {
+    position: fixed;
+    z-index: 120;
+    top: 0;
     & nav {
       justify-content: space-between;
     }

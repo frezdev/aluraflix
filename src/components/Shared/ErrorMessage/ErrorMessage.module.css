@@ -1,0 +1,10 @@
+.error {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--red);
+  line-height: 0;
+  display: block;
+  padding-block: 1.5rem;
+  font-family: var(--font-source-sans);
+  font-weight: 500;
+}
