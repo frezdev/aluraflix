@@ -1,5 +1,5 @@
 export interface Video {
-  id: number;
+  id: readonly number;
   title: string;
   categoryId: number;
   image: string;

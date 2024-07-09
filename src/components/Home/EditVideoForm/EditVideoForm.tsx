@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useVideosContext } from "@/hooks/useVideosContext"
 import { Modal } from "@/components/Shared/Modal"
 import { Select } from "@/components/Shared/Select"
@@ -7,50 +6,24 @@ import { Input } from "@/components/Shared/Input"
 import { LabelInput } from "@/components/Shared/InputLabel"
 import { Textarea } from "@/components/Shared/Textarea"
 import { Icon } from "@/components/Icon"
-import { Video } from "@/types"
-
-const INITIAL_VALUES = {
-  title: '',
-  categoryId: 0,
-  image: '',
-  description: '',
-  url: '',
-  id: 0
-}
+import type { CustomHandleChange } from "@/types"
+import { useValidationForm } from "@/hooks/useValidationForm"
 
 export const EditVideoForm = () => {
   const { state, updateVideo, unselectVideo } = useVideosContext()
   const { categories, selectedVideo } = state
-  const [formValues, setFormValues] = useState(selectedVideo ? selectedVideo : INITIAL_VALUES)
+  const { formik, handleReset, handleSubmit } = useValidationForm(selectedVideo!, async (formValues) => {
 
+  })
+  const { errors, values } = formik
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange: CustomHandleChange = (e) => {
     const { id, value } = e.target
-    setFormValues((prev => ({ ...prev, [id]: value })))
-  }
-
-
-  const handleSave: React.FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault()
-
-    const categoryId = Number(formValues.categoryId)
-
-    const values: Video = {
-      ...selectedVideo,
-      ...formValues,
-      categoryId,
-    }
-    updateVideo(values)
-    unselectVideo()
-  }
-
-
-  const handleReset = () => {
-    setFormValues(INITIAL_VALUES)
+    e.target.setCustomValidity('')
+    formik.setFieldValue(id, value)
   }
 
   const handleClose = () => {
-    setFormValues(INITIAL_VALUES)
     unselectVideo()
   }
 
@@ -60,7 +33,7 @@ export const EditVideoForm = () => {
         <button className={styles.closeBtn} onClick={handleClose}>
           <Icon.close />
         </button>
-        <form className={styles.form} onSubmit={handleSave}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.form__group_container}>
             <div className={styles.form__group}>
               <h3>EDITAR CARD:</h3>
@@ -70,8 +43,8 @@ export const EditVideoForm = () => {
                   id='title'
                   type="text"
                   variant="blue"
-                  required
-                  value={formValues.title}
+                  value={values.title}
+                  error={errors.title}
                   onChange={handleChange}
                   placeholder="Inserta un título"
                 />
@@ -82,9 +55,9 @@ export const EditVideoForm = () => {
                 <Select
                   id="categoryId"
                   variant="blue"
-                  required
                   onChange={handleChange}
-                  value={formValues.categoryId}
+                  error={errors.categoryId}
+                  value={values.categoryId!}
                   options={categories}
                 />
               </div>
@@ -95,8 +68,8 @@ export const EditVideoForm = () => {
                   id='image'
                   type="text"
                   variant="blue"
-                  required
-                  value={formValues.image}
+                  value={values.image}
+                  error={errors.image}
                   onChange={handleChange}
                   placeholder="Inserta la url de la imagen"
                 />
@@ -108,8 +81,8 @@ export const EditVideoForm = () => {
                   id='url'
                   type="text"
                   variant="blue"
-                  required
-                  value={formValues.url}
+                  value={values.url}
+                  error={errors.url}
                   onChange={handleChange}
                   placeholder="Inserta la url del video"
                 />
@@ -120,8 +93,8 @@ export const EditVideoForm = () => {
                 <Textarea
                   variant="blue"
                   id="description"
-                  required
-                  value={formValues.description}
+                  value={values.description}
+                  error={errors.description}
                   onChange={handleChange}
                 ></Textarea>
               </div>

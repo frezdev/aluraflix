@@ -28,19 +28,37 @@ function validationSchema() {
 }
 
 interface Config {
-  calback: (formValues: ReturnType<typeof initialValues>) => Promise<void>
+  calback: (formValues: ReturnType<typeof initialValues>) => Promise<void>,
+  initialValues: InitValues
 }
 
-export function useValidationForm(calback: Config['calback']) {
+export function useValidationForm(initialValues: Config['initialValues'], calback: Config['calback']) {
   const formik = useFormik({
-    initialValues: initialValues(),
+    initialValues: initialValues,
     validationSchema: validationSchema(),
-    onSubmit: async (formValues: ReturnType<typeof initialValues>) => {
+    onSubmit: async (formValues: typeof initialValues) => {
       await calback(formValues)
     }
   })
 
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault()
+    formik.handleSubmit()
+  }
+
+  const handleReset = () => {
+    formik.setValues({
+      categoryId: null,
+      title: '',
+      description: '',
+      image: '',
+      url: ''
+    })
+  }
+
   return {
     formik,
+    handleReset,
+    handleSubmit
   }
 }

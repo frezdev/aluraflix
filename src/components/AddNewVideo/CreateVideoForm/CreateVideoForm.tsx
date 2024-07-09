@@ -8,9 +8,16 @@ import { type CustomHandleChange } from '@/types'
 import { useVideosContext } from '@/hooks/useVideosContext'
 import { ErrorMessage } from '@/components/Shared/ErrorMessage'
 
+const initialValues = {
+  title: '',
+  description: '',
+  categoryId: null,
+  url: '',
+  image: ''
+}
 export const CreateVideoForm = () => {
   const { state } = useVideosContext()
-  const { formik } = useValidationForm(async () => {
+  const { formik, handleReset, handleSubmit } = useValidationForm(initialValues, async () => {
     console.log('form submitted')
   })
 
@@ -18,21 +25,6 @@ export const CreateVideoForm = () => {
     const { value, id } = e.target
     e.target.setCustomValidity('')
     formik.setFieldValue(id, value)
-  }
-
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault()
-    formik.handleSubmit()
-  }
-
-  const handleReset = () => {
-    formik.setValues({
-      categoryId: null,
-      title: '',
-      description: '',
-      image: '',
-      url: ''
-    })
   }
 
   return (
@@ -111,7 +103,7 @@ export const CreateVideoForm = () => {
           ></Textarea>
           <ErrorMessage>
             {formik.errors.description}
-            {'-'}
+            {' - '}
             {formik.errors.description && `${formik.values.description.length} de 20`}
           </ErrorMessage>
         </div>
