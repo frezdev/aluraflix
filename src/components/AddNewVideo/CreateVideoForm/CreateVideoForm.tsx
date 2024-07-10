@@ -59,7 +59,6 @@ export const CreateVideoForm = () => {
 
   const createHandleSubmit = handleSubmit(() => {
     setErrors(formik.errors)
-    console.log(formik.errors);
   })
 
   return (
