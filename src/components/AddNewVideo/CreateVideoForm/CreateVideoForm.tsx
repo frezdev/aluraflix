@@ -7,6 +7,7 @@ import { useValidationForm } from '@/hooks/useValidationForm'
 import { type CustomHandleChange } from '@/types'
 import { useVideosContext } from '@/hooks/useVideosContext'
 import { ErrorMessage } from '@/components/Shared/ErrorMessage'
+import { videosService } from '@/services/videos'
 
 const initialValues = {
   title: '',
@@ -16,9 +17,20 @@ const initialValues = {
   image: ''
 }
 export const CreateVideoForm = () => {
-  const { state } = useVideosContext()
-  const { formik, handleReset, handleSubmit } = useValidationForm(initialValues, async () => {
+  const { state, addVideo } = useVideosContext()
+  const { formik, handleReset, handleSubmit } = useValidationForm(initialValues, async (formValues) => {
     console.log('form submitted')
+    if (formValues.categoryId !== null) {
+      const newVideo = {
+        ...formValues,
+        categoryId: formValues.categoryId
+      }
+      const { data, error } = await videosService.create(newVideo);
+
+      console.log({ data, error });
+
+      if (data) addVideo(data)
+    }
   })
 
   const handleChangeText: CustomHandleChange = (e) => {
@@ -52,7 +64,7 @@ export const CreateVideoForm = () => {
             <Select
               id='categoryId'
               variant="black"
-              value={formik.values.categoryId!}
+              value={formik.values.categoryId ?? ''}
               error={formik.errors.categoryId}
               onChange={handleChangeText}
               options={state.categories}

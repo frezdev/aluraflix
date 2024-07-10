@@ -1,8 +1,9 @@
 import { type Category } from "@/types"
+import { API_URL } from "./config"
 
 const getAll = async () => {
   try {
-    const res = await fetch('/api/categories.json')
+    const res = await fetch(`${API_URL}/categories`)
     const data = await res.json() as Category[]
 
     return { data, error: null }

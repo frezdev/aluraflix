@@ -13,4 +13,12 @@ export interface Category {
   asentColor: string;
 }
 
+export interface CreatedVideo {
+  title: string;
+  categoryId: number;
+  image: string;
+  description: string;
+  url: string;
+}
+
 export type CustomHandleChange = React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
