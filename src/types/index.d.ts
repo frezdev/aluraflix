@@ -21,4 +21,12 @@ export interface CreatedVideo {
   url: string;
 }
 
+export interface InitialErrors {
+  title: string | undefined;
+  categoryId: string | undefined;
+  image: string | undefined;
+  description: string | undefined;
+  url: string | undefined;
+}
+
 export type CustomHandleChange = React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>

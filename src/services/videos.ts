@@ -44,14 +44,12 @@ const create = async (video: CreatedVideo) => {
     const res = await fetch(`${API_URL}/videos`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(video)
     });
-    console.log({ res });
 
     if (!res.ok) throw new Error(res.statusText);
-
 
     const createdVideo = await res.json() as Video
 
@@ -67,8 +65,31 @@ const create = async (video: CreatedVideo) => {
   }
 }
 
+const deleteOne = async (id: number) => {
+  try {
+    const res = await fetch(`${API_URL}/videos/${id}`, {
+      method: 'DELETE'
+    })
+
+    if (!res.ok) throw new Error(res.statusText);
+
+    const { message } = await res.json() as { message: string }
+
+    return { message, error: null }
+  } catch (error) {
+    if (error instanceof Error) {
+      return { error, message: null }
+    }
+    return {
+      error: new Error('Unknown error'),
+      message: null
+    }
+  }
+}
+
 export const videosService = {
   getByCategoryId,
   getAll,
-  create
+  create,
+  deleteOne
 }
