@@ -39,7 +39,7 @@ export const EditVideoForm = () => {
         <button className={styles.closeBtn} onClick={handleClose}>
           <Icon.close />
         </button>
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit(handleClose)}>
           <div className={styles.form__group_container}>
             <div className={styles.form__group}>
               <h3>EDITAR CARD:</h3>

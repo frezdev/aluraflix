@@ -71,18 +71,14 @@ const deleteOne = async (id: number) => {
       method: 'DELETE'
     })
 
-    if (!res.ok) throw new Error(res.statusText);
-
-    const { message } = await res.json() as { message: string }
-
-    return { message, error: null }
+    if (res.status !== 204) throw new Error(res.statusText);
+    return { error: null }
   } catch (error) {
     if (error instanceof Error) {
-      return { error, message: null }
+      return { error }
     }
     return {
       error: new Error('Unknown error'),
-      message: null
     }
   }
 }

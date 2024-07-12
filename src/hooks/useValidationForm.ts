@@ -41,11 +41,11 @@ export function useValidationForm(initialValues: Config['initialValues'], calbac
     }
   })
 
-  const handleSubmit = (calback: () => void) => {
+  const handleSubmit = (calback?: () => void) => {
     return (e: React.FormEvent<HTMLFormElement>) => {
-      calback()
       e.preventDefault()
       formik.handleSubmit()
+      if (calback) calback();
     }
   }
 
